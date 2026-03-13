@@ -70,7 +70,7 @@ export function Navbar() {
   const navLinks = [
     { href: '/' as const, label: t('home') },
     { href: '/hotels' as const, label: t('hotels') },
-    { href: '/ui-kit' as const, label: t('uiKit') },
+    { href: '/about' as const, label: t('about') },
   ];
 
   return (

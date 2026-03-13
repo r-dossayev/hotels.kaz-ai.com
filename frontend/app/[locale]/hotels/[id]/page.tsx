@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { hotels } from '@/data/hotels';
+import { routing } from '@/i18n/routing';
 import { Container } from '@/components/layout/Container';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { HotelGallery } from '@/components/hotels/HotelGallery';
@@ -16,6 +17,7 @@ interface HotelPageProps {
 
 export default async function HotelDetailPage({ params }: HotelPageProps) {
   const { id, locale } = await params;
+  setRequestLocale(locale);
   const hotel = hotels.find((h) => h.id === id);
   const navT = await getTranslations('nav');
   const t = await getTranslations('hotels');
@@ -63,7 +65,12 @@ export default async function HotelDetailPage({ params }: HotelPageProps) {
 }
 
 export async function generateStaticParams() {
-  return hotels.map((hotel) => ({
-    id: hotel.id,
-  }));
+  const locales = routing.locales;
+  const params: { locale: string; id: string }[] = [];
+  for (const locale of locales) {
+    for (const hotel of hotels) {
+      params.push({ locale, id: hotel.id });
+    }
+  }
+  return params;
 }
