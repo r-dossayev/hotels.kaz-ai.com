@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="nurdev.kz" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="nurdev.kz">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/hotels.kaz-ai.com" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
